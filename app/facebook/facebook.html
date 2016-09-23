@@ -1,0 +1,47 @@
+<div class="row" ng-controller="FacebookCtrl">
+  <div class="col-md-4">
+    <h4>{{welcomeMsg}}</h4>
+    <div ng-if="isLoggedIn == true">
+      <a href="{{userInfo.link}}" target="_blank"><img ng-src="{{picture}}"></a>
+    </div> 
+    <br><br> 
+    <div ng-if="isLoggedIn == false">
+      <button type="button" class="btn btn-default" ng-click="login()">Login</button>
+    </div>
+    <div ng-if="isLoggedIn == true">
+      <button type="button" class="btn btn-default" ng-click="logout()">Logout</button>
+    </div>
+    <br><br>
+    <div ng-if="isLoggedIn == true" class="well">
+      <h4>User Info</h4>
+      <ul>
+        <li>Id: {{userInfo.id}}</li>
+        <li>First Name: {{userInfo.first_name}}</li>
+        <li>Last Name: {{userInfo.last_name}}</li>
+        <li>Email: {{userInfo.email}}</li>
+        <li>Gender: {{userInfo.gender}}</li>
+        <li>Locale: {{userInfo.last_locale}}</li>
+      </ul>
+    </div>
+    <br>
+    <div class="well">
+      <h4>Permissions</h4>
+      <ul>
+        <li ng-repeate="permission in permissions">{{permission.permission}} - {{permission.status}}</li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-md-8">
+    <h3>Welcome To Facebook!</h3>
+      <form action="" method="POST" role="form">
+        <legend>Form title</legend>
+      
+        <div class="form-group">
+          <label for="">Status Update</label><br>
+          <textarea name="" id="" cols="30" rows="1"></textarea>
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+  </div>
+</div>
+  
