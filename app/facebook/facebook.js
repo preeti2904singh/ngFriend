@@ -11,10 +11,10 @@ angular.module('ngFriend.facebook', ['ngRoute', 'ngFacebook'])
 
 .config( function( $facebookProvider ) {
   $facebookProvider.setAppId('890137914450678'); //facebook App ID
-  $facebookProvider.setPermissions("email","public_profile","user_friends","user_photos"," read_custom_friendlists","user_birthday", "friends_birthday", "user_location" , "friends_location");
+  $facebookProvider.setPermissions("email","public_profile","user_post","publish_action","user_friends","user_photos"," read_custom_friendlists","user_birthday", "friends_birthday", "user_location" , "friends_location");
 })
 
-.run( function( $rootScope ) {
+.run(function($rootScope) {
   // Cut and paste the "Load the SDK" code from the facebook javascript sdk page.
 	(function(d, s, id){
 		var js, fjs = d.getElementsByTagName(s)[0];

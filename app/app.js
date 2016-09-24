@@ -7,8 +7,7 @@ angular.module('ngFriend', [
   'ngFriend.view2',
   'ngFriend.facebook'
 ]).
-config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
-  $locationProvider.hashPrefix('!');
-
+config(['$routeProvider', function($routeProvider) {
+  // $locationProvider.hashPrefix('');
   $routeProvider.otherwise({redirectTo: '/facebook'});
 }]);

@@ -28,9 +28,9 @@ h4.login_txt.ng-binding {
     color: #000;
 }
 
-img.user_profile {
+/*img.user_profile {
     width: 200px;
-}
+}*/
 
 button.btn.btn-default.logout_btn {
     border-radius: 0;
@@ -52,7 +52,7 @@ button.btn.btn-default.logout_btn {
     padding: 10px;
 }
 
-h4.user_txt {
+/*h4.user_txt {
     color: #fff;
-}
+}*/
 
