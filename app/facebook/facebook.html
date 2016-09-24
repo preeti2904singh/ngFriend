@@ -11,16 +11,21 @@
     <div ng-if="isLoggedIn == true">
       <button type="button" class="btn btn-default" ng-click="logout()">Logout</button>
     </div>
+    <div ng-if="isLoggedIn == true">
+      <div ng-repeat="friend in friendList">
+        {{friend.name}}
+      </div>
+      <button type="button" class="btn btn-default" ng-click="loadFriends()">Load</button>
+    </div>
     <br><br>
     <div ng-if="isLoggedIn == true" class="well">
       <h4>User Info</h4>
       <ul>
         <li>Id: {{userInfo.id}}</li>
-        <li>First Name: {{userInfo.first_name}}</li>
-        <li>Last Name: {{userInfo.last_name}}</li>
+        <li>Name: {{userInfo.name}}</li>
         <li>Email: {{userInfo.email}}</li>
         <li>Gender: {{userInfo.gender}}</li>
-        <li>Locale: {{userInfo.last_locale}}</li>
+        <li>Locale: {{userInfo.locale}}</li>
       </ul>
     </div>
     <br>

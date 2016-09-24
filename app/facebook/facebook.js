@@ -11,7 +11,7 @@ angular.module('ngFriend.facebook', ['ngRoute', 'ngFacebook'])
 
 .config( function( $facebookProvider ) {
   $facebookProvider.setAppId('890137914450678'); //facebook App ID
-  $facebookProvider.setPermissions("email","public_profile","user_friends","user_photos"," read_friendlists");
+  $facebookProvider.setPermissions("email","public_profile","user_friends","user_photos"," read_custom_friendlists","user_birthday", "friends_birthday", "user_location" , "friends_location");
 })
 
 .run( function( $rootScope ) {
@@ -33,6 +33,7 @@ angular.module('ngFriend.facebook', ['ngRoute', 'ngFacebook'])
 		$facebook.login().then(function(){
 			$scope.isLoggedIn = true;
 			refresh();
+			$scope.loadFriends();
 		});
 	}
 
@@ -45,7 +46,7 @@ angular.module('ngFriend.facebook', ['ngRoute', 'ngFacebook'])
 
 	function refresh(){
 		$facebook.api("/me").then(function(response){
-			$scope.welcomeMsg = "Welcome"+ response.name;
+			$scope.welcomeMsg = "Welcome "+ response.name;
 			$scope.isLoggedIn = true;
 			$scope.userInfo = response;
 			$facebook.api('/me/picture').then(function(response){
@@ -62,11 +63,14 @@ angular.module('ngFriend.facebook', ['ngRoute', 'ngFacebook'])
 
 	refresh();
 
-	$facebook.api("/{user-id}/friends",
-	    function (response) {
-	      if (response && !response.error) {
-	      	console.log("so mNY FRNS");
-	      }
-	    }
-	);
+	$scope.loadFriends = function() {
+      $facebook.api('/me/friends', function(response) {
+        $scope.$apply(function() {
+          $scope.friendList = response.data;
+          console.log($scope.friendList);
+        });
+
+      });
+    };
+
 }]); 
