@@ -32,8 +32,8 @@ angular.module('ngFriend.facebook', ['ngRoute', 'ngFacebook'])
 	$scope.login = function(){
 		$facebook.login().then(function(){
 			$scope.isLoggedIn = true;
-			refresh();
 			$scope.loadFriends();
+			refresh();
 		});
 	}
 
@@ -57,17 +57,17 @@ angular.module('ngFriend.facebook', ['ngRoute', 'ngFacebook'])
 			})
 		},
 		function(err){
-			$scope.welcomeMsg = "Please Log In";
+			$scope.welcomeMsg = "Log in to Facebook";
 		});
 	}
 
-	refresh();
+	// refresh();
 
 	$scope.loadFriends = function() {
       $facebook.api('/me/friends', function(response) {
         $scope.$apply(function() {
           $scope.friendList = response.data;
-          console.log($scope.friendList);
+          console.log($scope.email);
         });
 
       });

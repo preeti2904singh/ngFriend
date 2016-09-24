@@ -1,52 +1,59 @@
-<div class="row" ng-controller="FacebookCtrl">
-  <div class="col-md-4">
-    <h4>{{welcomeMsg}}</h4>
-    <div ng-if="isLoggedIn == true">
-      <a href="{{userInfo.link}}" target="_blank"><img ng-src="{{picture}}"></a>
-    </div> 
-    <br><br> 
-    <div ng-if="isLoggedIn == false">
-      <button type="button" class="btn btn-default" ng-click="login()">Login</button>
-    </div>
-    <div ng-if="isLoggedIn == true">
-      <button type="button" class="btn btn-default" ng-click="logout()">Logout</button>
-    </div>
-    <div ng-if="isLoggedIn == true">
-      <div ng-repeat="friend in friendList">
-        {{friend.name}}
-      </div>
-      <button type="button" class="btn btn-default" ng-click="loadFriends()">Load</button>
-    </div>
-    <br><br>
-    <div ng-if="isLoggedIn == true" class="well">
-      <h4>User Info</h4>
-      <ul>
-        <li>Id: {{userInfo.id}}</li>
-        <li>Name: {{userInfo.name}}</li>
-        <li>Email: {{userInfo.email}}</li>
-        <li>Gender: {{userInfo.gender}}</li>
-        <li>Locale: {{userInfo.locale}}</li>
-      </ul>
-    </div>
-    <br>
-    <div class="well">
-      <h4>Permissions</h4>
-      <ul>
-        <li ng-repeate="permission in permissions">{{permission.permission}} - {{permission.status}}</li>
-      </ul>
+<div class="container" ng-controller="FacebookCtrl">
+  <div class="row login_section" ng-if="isLoggedIn == false">
+    <div class="col-md-12">
+      <h4 class="login_txt">{{welcomeMsg}}</h4>
+      <button type="button" class="btn btn-default login_btn" ng-click="login()">Login</button>
     </div>
   </div>
-  <div class="col-md-8">
-    <h3>Welcome To Facebook!</h3>
-      <form action="" method="POST" role="form">
-        <legend>Form title</legend>
+  <div class="row">
+    <div class="col-md-4">
+      <h4 ng-if="isLoggedIn == true">{{welcomeMsg}}</h4>
+      <div ng-if="isLoggedIn == true">
+        <a href="{{userInfo.link}}" target="_blank"><img ng-src="{{picture}}" class="user_profile"></a>
+      </div> 
+      <br><br> 
       
-        <div class="form-group">
-          <label for="">Status Update</label><br>
-          <textarea name="" id="" cols="30" rows="1"></textarea>
+      <div ng-if="isLoggedIn == true">
+        <button type="button" class="btn btn-default logout_btn" ng-click="logout()">Logout</button>
+      </div>
+      <div ng-if="isLoggedIn == true">
+        <div ng-repeat="friend in friendList">
+          {{friend.name}}
         </div>
-        <button type="submit" class="btn btn-default">Submit</button>
-      </form>
+        <button type="button" class="btn btn-default" ng-click="loadFriends()">Load</button>
+      </div>
+      <br><br>
+      <div ng-if="isLoggedIn == true" class="card">
+        <h4 class="user_txt">User Info</h4>
+        <ul>
+          <li>Id: {{userInfo.id}}</li>
+          <li>Name: {{userInfo.name}}</li>
+          <li>Email: {{userInfo.email}}</li>
+          <li>Gender: {{userInfo.gender}}</li>
+          <li>Locale: {{userInfo.locale}}</li>
+        </ul>
+      </div>
+      <br>
+      <!-- <div class="well" ng-if="isLoggedIn == true">
+        <h4>Permissions</h4>
+        <ul>
+          <li ng-repeate="permission in permissions">{{permission.permission}} - {{permission.status}}</li>
+        </ul>
+      </div> -->
+    </div>
+    <div class="col-md-8" ng-if="isLoggedIn == true">
+      <h3>Welcome To Facebook!</h3>
+        <form action="" method="POST" role="form">
+          <legend>Form title</legend>
+        
+          <div class="form-group">
+            <label for="">Status Update</label><br>
+            <textarea name="" id="" cols="30" rows="1"></textarea>
+          </div>
+          <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+    </div>
   </div>
 </div>
+
   
