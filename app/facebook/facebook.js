@@ -11,7 +11,7 @@ angular.module('ngFriend.facebook', ['ngRoute', 'ngFacebook'])
 
 .config( function( $facebookProvider ) {
   $facebookProvider.setAppId('890137914450678'); //facebook App ID
-  $facebookProvider.setPermissions("email","public_profile","user_post","publish_action","user_friends","user_photos"," read_custom_friendlists","user_birthday", "friends_birthday", "user_location" , "friends_location");
+  $facebookProvider.setPermissions("email","user_friends","user_photos"," read_custom_friendlists","user_birthday", "friends_birthday", "user_location" , "friends_location");
 })
 
 .run(function($rootScope) {
@@ -62,7 +62,8 @@ angular.module('ngFriend.facebook', ['ngRoute', 'ngFacebook'])
 	}
 
 	// refresh();
-
+	
+	//Friend List
 	$scope.loadFriends = function() {
       $facebook.api('/me/friends', function(response) {
         $scope.$apply(function() {
